@@ -1,0 +1,45 @@
+.overlay {
+  position: fixed; /* Вместо absolute — покрывает весь экран даже при скролле */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Увеличенная прозрачность для лучшей читаемости */
+  display: grid;
+  place-items: center;
+  z-index: 1000; /* Достаточно для большинства случаев */
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease-in; /* Плавное появление */
+}
+
+.modal {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px; /* Чуть больше скругление */
+  max-width: min(90vw, 500px); /* Адаптивное ограничение ширины */
+  width: 90%; /* Занимает 90% ширины экрана, но не больше 500 px */
+  overflow: auto; /* Полоса прокрутки при необходимости */
+  position: relative; /* Центрирование через родителя */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень для объёма */
+  animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Эффект появления */
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 480px) {
+  .modal {
+    padding: 1rem; /* Уменьшенные отступы */
+    width: 95%; /* Почти полная ширина экрана */
+    max-width: none; /* Снимаем ограничение */
+  }
+}
