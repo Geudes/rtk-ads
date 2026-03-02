@@ -2,14 +2,12 @@ import './modal.css'
 
 function Modal({children, isOpen, onClose, title}) {
 
-    console.log(isOpen, onClose, title)
-
     if(!isOpen) {
         return <></>
     }
 
   return (
-    <div className='overlay' onClick={() => e.stopPropagation()}>
+    <div className='overlay' onClick={(e) => e.stopPropagation()}>
         <div className="modal">
             <div className="modal__header">
                 <h3>{title}</h3>

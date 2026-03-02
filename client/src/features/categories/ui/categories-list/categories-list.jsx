@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { lazy, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../../../../widgets/loader/loader'
-import CategoriesApi from '../../api/categories-api'
 import { setCategories } from '../../models/categories-thunks'
 import CategoriesItem from '../categories-item/categories-item'
+
+const Loader = lazy(() => import('../../../../widgets/loader/loader'))
 
 function CategoriesList() {
 
@@ -13,8 +13,6 @@ function CategoriesList() {
   useEffect(() => {
     dispatch(setCategories())
   }, [dispatch])
-
-  console.log(categoriesItems)
 
   if (loading) {
     return <Loader />

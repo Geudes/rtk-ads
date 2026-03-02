@@ -39,6 +39,8 @@ const schema = yup
 })
 .required()
 function RegisterForm() {
+
+
     const {
         register,
         handleSubmit,
@@ -46,6 +48,7 @@ function RegisterForm() {
     } = useForm({
         resolver:yupResolver(schema)
     })
+    
     const {loading , error} = useSelector((state)=> state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()

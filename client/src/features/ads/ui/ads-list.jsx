@@ -1,8 +1,10 @@
-import { useEffect } from "react"
+import { lazy, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Loader from "../../../widgets/loader/loader"
+import useToast from "../../../widgets/toast/models/use-toast"
 import { fetchAds } from "../models/ads-thunks"
 import AdsItem from "./ads-item"
+
+const Loader = lazy(() => import("../../../widgets/loader/loader"))
 
 function AdsList() {
   const { items , loading, error } = useSelector(state => state.ads)
@@ -12,11 +14,12 @@ function AdsList() {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchAds())
-  }, [dispatch])
+  const {showToast} = useToast()
+  
 
-  console.log(items)
+  useEffect(() => {
+    dispatch(fetchAds()).unwrap().catch(_ => showToast('Ойойой произошла непредвиденная ошибка', 'error'))
+  }, [dispatch, showToast])
 
 
   if (error) return <p>{error}</p>

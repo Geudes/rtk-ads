@@ -10,7 +10,6 @@ export const fetchAds = createAsyncThunk(
             if('error' in response) {
                 throw new Error(response.error)
             }
-            console.log(response)
 
             return response
         } catch(error) {
@@ -60,9 +59,9 @@ export const updateAds = createAsyncThunk(
                 throw new Error(data.error)
             }
 
-            return id
+            return data
         } catch (error) {
-            return rejectWithValue(error.message)
+            return rejectWithValue(error.response.data || error.message || 'Неизвестная ошибка')
         }
     }
 )

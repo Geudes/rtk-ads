@@ -1,16 +1,18 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
-import AdsOnePage from "../../pages/ads/ads-one-page";
-import AdsPage from "../../pages/ads/ads-page";
-import LoginPage from "../../pages/auth/login-page";
-import RegisterPage from "../../pages/auth/register-page";
-import CategoriesPage from "../../pages/categories/categories-page";
-import CategoryPage from "../../pages/categories/category-page";
-import FavoritesPage from "../../pages/favorites/favorites-page";
-import MyOrdersPage from "../../pages/orders/my-orders/my-orders-page";
-import OrdersPage from "../../pages/orders/orders-page";
-import ProfilePage from "../../pages/profile/profile-page";
-import NoteFound from "../../widgets/error/note-found";
-import Layouts from "../layouts/Layouts";
+
+const AdsOnePage = lazy(() => import("../../pages/ads/ads-one-page")) ;
+const AdsPage = lazy(() => import("../../pages/ads/ads-page")) ;
+const LoginPage = lazy(() => import("../../pages/auth/login-page")) ;
+const RegisterPage = lazy(() => import("../../pages/auth/register-page")) ;
+const CategoriesPage = lazy(() => import("../../pages/categories/categories-page")) ;
+const CategoryPage = lazy(() => import("../../pages/categories/category-page")) ;
+const FavoritesPage = lazy(() => import("../../pages/favorites/favorites-page")) ;
+const MyOrdersPage = lazy(() => import("../../pages/orders/my-orders/my-orders-page")) ;
+const OrdersPage = lazy(() => import("../../pages/orders/orders-page")) ;
+const ProfilePage = lazy(() => import("../../pages/profile/profile-page")) ;
+const NoteFound = lazy(() => import("../../widgets/error/note-found")) ;
+const Layouts = lazy(() => import("../layouts/Layouts")) ;
 
 
 const router = createBrowserRouter([

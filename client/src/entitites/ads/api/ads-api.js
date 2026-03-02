@@ -14,8 +14,8 @@ static async create(form){
     return data
 }
 static async update(id,  form){
-    const {data} = await AxiosInstance.put( `/ads/${id}`,form)
-    return data
+    const { data } = await AxiosInstance.put( `/ads/${id}`,form)
+    console.log(data)
 }
 
 }

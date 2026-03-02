@@ -8,24 +8,6 @@ const initialState = {
     error:undefined,
 }
 
-// export const fetchUserById = createAsyncThunk(
-//   'users/fetchById',
-//   async (userId, { rejectWithValue }) => { // The first param can accept arguments, the second is thunkAPI
-//     try {
-//       const response = await fetch(`/api/users/${userId}`);
-//       // fetch won't reject on HTTP errors (like 404), so we check response.ok manually
-//       if (!response.ok) {
-//         throw new Error('Server error');
-//       }
-//       const data = await response.json();
-//       return data; // This value becomes the payload of the 'fulfilled' action
-//     } catch (error) {
-//       // Use rejectWithValue to return a specific error payload and trigger the 'rejected' action
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 const categoriesSlice = createSlice({
     name: 'categories',
     initialState,
