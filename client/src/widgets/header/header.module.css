@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+
+    .header__nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+            padding: .5em;
+            border-radius: .5em;
+            transition: color .3s ease, background-color .5s ease;
+        }
+
+        a:hover {
+            color: var(--text-accent-color);
+            background-color: var(--bg-accent-color);
+            padding: .5em;
+        }
+    }
+    
+
+}

@@ -3,9 +3,11 @@ import {useForm} from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import * as yup  from 'yup'
-import AuthApi from '../api/auth-api'
-import { loginFail, loginStart, loginSuccess} from '../models/auth-slice'
-import AuthStorage from '../models/auth-storage'
+import AuthApi from '../../api/auth-api'
+import { loginFail, loginStart, loginSuccess} from '../../models/auth-slice'
+import AuthStorage from '../../models/auth-storage'
+
+import './login-form.css'
 
 
 
@@ -15,12 +17,12 @@ const schema = yup
 .object({
     email:yup
     .string()
-    .email('не коректный')
-    .required('поле обязательно'),
+    .email('Не коректный адрес')
+    .required('Поле обязательно'),
     password:yup
     .string()
-    .min(2,'2')
-    .required('поле обязательно'),
+    .min(2,'Пароль слишком слабый, прям как ты')
+    .required('Поле обязательно'),
 })
 .required()
 
@@ -54,19 +56,19 @@ function LoginForm() {
         }
     }
 return (
-    <form onSubmit={handleSubmit(onSubmit)} style={{display:'flex', flexDirection:'column'}}>
-        {error && <span> {error.message} </span>}
+    <form onSubmit={handleSubmit(onSubmit)} className='log-form'>
+        {error && <span className='error'> {error.message} </span>}
         <label >
-            {errors.email && <span>{errors.email.message}</span>}
-           email
+           Email
             <input type="text"  {...register('email')} id='email'/>
+            {errors.email && <span className='error'>{errors.email.message}</span>}
         </label>
         <label >
-            {errors.password && <span>{errors.password.message}</span>}
-           password
+           Password
             <input type="text"  {...register('password')} id='password'/>
+            {errors.password && <span className='error'>{errors.password.message}</span>}
         </label>
-           <button type='submit'>{loading ? 'входим' : 'вошли'}</button>
+           <button type='submit'>{loading ? 'Входим...' : 'Войти'}</button>
     </form>
   )
 }

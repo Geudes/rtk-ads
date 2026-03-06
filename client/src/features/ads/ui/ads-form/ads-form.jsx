@@ -2,8 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import * as yup from "yup"
-import useToast from "../../../widgets/toast/models/use-toast"
-import { createAds, updateAds } from "../models/ads-thunks"
+import useToast from "../../../../widgets/toast/models/use-toast"
+import { createAds, updateAds } from "../../models/ads-thunks"
 
 const schema = yup
 .object({

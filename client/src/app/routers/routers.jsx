@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
+import GuardAuth from "../../shared/lib/guard/guard-auth";
 
 const AdsOnePage = lazy(() => import("../../pages/ads/ads-one-page")) ;
 const AdsPage = lazy(() => import("../../pages/ads/ads-page")) ;
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       children:[
         {
             path:'/ads',
-            element:<AdsPage />
+            element:<GuardAuth><AdsPage /></GuardAuth>
         },
         {
             path:'/ads/:id',
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/favorites',
-            element:<FavoritesPage />
+            element:<GuardAuth><FavoritesPage /></GuardAuth>
         },
         {
             patth:'/categories',
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/orders/:id',
-            element:<MyOrdersPage/>
+            element:<GuardAuth><MyOrdersPage/></GuardAuth>
         },
         {
             path:'/categories',

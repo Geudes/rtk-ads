@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router'
 import AuthApi from '../../features/auth/api/auth-api'
 import { logout } from '../../features/auth/models/auth-slice'
+import styles from './header.module.css'
 
 const Header = memo(function Header() {
   const { user } = useSelector((state) => state.auth)
@@ -16,29 +17,32 @@ const Header = memo(function Header() {
 
   }
   return (
-    <nav className='header'>
-      <h2><Link to={'/ads'}>Обьявления</Link></h2>
-      {!user && (
-        <div>
-          <h2><Link to={'/register'}>Регистрация</Link></h2>
-          <h2><Link to={'/login'}>Вход</Link></h2>
-        </div>
-      )}
-      {user && (
-        <>
-          <button className='header_logout' onClick={logOutHandler}>Выход</button>
-          <h2><Link to={'/profile'}>{user.name ?? user.email}</Link></h2>
-          <h2><Link to={'/favorites'}>Избаранное</Link></h2>
-          <h2><Link to={'/orders'}>Заказы</Link></h2>
-        </>
-      )}
+    <header className={styles.header}>
+      <nav className={styles.header__nav}>
+        <Link to={'/ads'}>Обьявления</Link>
+        {!user && (
+          <>
+            <Link to={'/register'}>Регистрация</Link>
+            <Link to={'/login'}>Вход</Link>
+          </>
+        )}
+        {user && user.role === 'admin' && (
+          <>
+            <Link to={'/categories'}>Категории</Link>
+          </>
+        )}
+        {user && (
+          <>
+            <Link to={'/favorites'}>Избаранное</Link>
+            <Link to={'/orders'}>Заказы</Link>
+            <Link to={'/profile'}>{user.name ?? user.email}</Link>
+            <button className='header_logout' onClick={logOutHandler}>🔙</button>
+          </>
+        )}
 
-      {user && user.role === 'admin' && (
-        <>
-          <h2><Link to={'/categories'}>Категории</Link></h2>
-        </>
-      )}
-    </nav>
+      </nav>
+
+    </header>
   )
 }
 

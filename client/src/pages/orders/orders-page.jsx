@@ -1,8 +1,9 @@
+import OrdersList from "../../features/orders/ui/orders-list"
 
 
 function OrdersPage() {
   return (
-    <div>orders-page</div>
+    <div><OrdersList /></div>
   )
 }
 

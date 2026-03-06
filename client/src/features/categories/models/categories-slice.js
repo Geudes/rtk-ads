@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import CategoriesApi from "../api/categories-api"
 import { createCategories, deleteCategories, setCategories } from "./categories-thunks"
 
 const initialState = {

@@ -1,10 +1,12 @@
 import { lazy, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import useToast from "../../../widgets/toast/models/use-toast"
-import { fetchAds } from "../models/ads-thunks"
-import AdsItem from "./ads-item"
+import useToast from "../../../../widgets/toast/models/use-toast"
+import { fetchAds } from "../../models/ads-thunks"
+import AdsItem from "../ads-item/ads-item"
 
-const Loader = lazy(() => import("../../../widgets/loader/loader"))
+import './ads-list.css'
+
+const Loader = lazy(() => import("../../../../widgets/loader/loader"))
 
 function AdsList() {
   const { items , loading, error } = useSelector(state => state.ads)
@@ -31,7 +33,7 @@ function AdsList() {
 
 
   return (
-    <div>
+    <div className="ads-list">
       {items.map(adsItem => (
         <AdsItem ad={adsItem} key={adsItem.id} />
       ))}</div>

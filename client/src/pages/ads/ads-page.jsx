@@ -1,5 +1,5 @@
-import AdsForm from '../../features/ads/ui/ads-form'
-import AdsList from '../../features/ads/ui/ads-list'
+import AdsForm from '../../features/ads/ui/ads-form/ads-form'
+import AdsList from '../../features/ads/ui/ads-list/ads-list'
 
 
 

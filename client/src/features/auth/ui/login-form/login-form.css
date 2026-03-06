@@ -1,0 +1,16 @@
+.log-form {
+    width: 50%;
+    transition: all .5s ease;
+}
+
+.error {
+    font-size: .75rem;
+    color: var(--text-danger-80);
+}
+
+@media(max-width: 1000px) {
+    .log-form {
+        width: 100%;
+        color: tomato;
+    }
+}

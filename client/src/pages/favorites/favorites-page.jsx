@@ -1,8 +1,11 @@
+import FavoritesList from "../../features/favorites/ui/favorites-list"
 
 
 function FavoritesPage() {
   return (
-    <div>favorites-page</div>
+    <div>
+      <FavoritesList />
+    </div>
   )
 }
 
